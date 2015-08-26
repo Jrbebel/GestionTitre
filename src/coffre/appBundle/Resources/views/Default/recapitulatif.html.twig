@@ -1,0 +1,42 @@
+
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6" >
+                <div class="panel panel-primary" id="jumbotron" >
+                    <div class="panel-heading">Information</div>
+
+                    <div class="panel-body" >
+
+                        <dl class="dl-horizontal">
+
+                            <dt>Montant des DTR total: </dt>
+                            <dd> <span class="badge">{{ Totaldtr *0.01 }} €</span></dd>
+                            <dt>Nombre de ticket : </dt>
+                            <dd> <span class="badge">{{totalticket}} </span></dd>
+
+                            <dt>DTR + Kadéos : </dt>
+                            <dd> <span class="badge">{{ ( Totaldtr + sum )*0.01}} €</span></dd>
+                            </br>           
+                            <hr>
+                            {#   <dt>Total des tickets :  </dt>
+                               <dd> <span class="badge">0 €</span></dd>#}
+                            {#      <dt>        Nombre de ticket total :  </dt>
+                                  <dd> <span class="badge">{{calculnbretotal}}</span></dd>#}
+                        </dl>
+
+
+                    </div>
+                </div>
+                {{ render(controller("coffreappBundle:Default:Detailstitre")) }}        <a type="button" class="btn btn-primary" href="{{path('index')}}" >Retour</a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

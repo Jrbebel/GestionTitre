@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title> {% block title %} Bienvenue {% endblock %} </title>
+        <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap-theme.min.css')}}" />
+        <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/style.css')}}" />
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<nav class="navbar navbar-default ">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+            <li><a  data-toggle="modal" data-target="#myModal">Nouvelle session</a></li>
+            <li><a  data-toggle="modal" data-target="#mycodecaisse">Code Caisse</a></li>
+            <li><a  href="{{path('recapitulatif')}}">Récapitulatif</a></li>
+            <li><a  href="{{path('recapitulatifoperateur')}}">Récapitulatif operateur</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Document <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{path('generationpdf')}}">Fiche titre</a></li>
+                    <li><a data-toggle="modal" data-target="#imprimebordereaux">Bordereaux titre</a></li>
+
+                </ul>
+            </li>
+            <li id="info" ><a>Session :  <span class="badge">{{ app.session.get('Session') }}</span></a></li>
+            <li ><a>N° Caisse :  <span class="badge">{{ app.session.get('Codecaisse') }}</span></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<body>
+
+{% block body %}{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{asset('bundles/coffreapp/js/jquery.js')}}"></script>
+    <script src="{{asset('bundles/coffreapp/js/bootstrap.min.js')}}"></script>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "::document.html.twig" %}
+{% block stylesheets %}
+    <style type="text/css">
+        img{
+
+            float:left;
+            height: 150px;
+            width: 200px;
+        }
+        #date{
+            font-weight: bold;
+            float: left;
+            padding-left: 350px;  
+
+        }
+        #trdate{
+            padding-right: 450px;
+
+        }
+        #table{
+            margin-top: 200px;
+            margin-left: 100px;
+
+        }
+
+        #tdtable{
+            padding-right: 200px;
+            padding-top: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+
+        }
+        #hr{
+            width: 150px;
+            margin-left: 390px;       
+        }
+        #sommetable{
+            margin-left : 390px;
+            width: 150px;
+            text-align: center;
+            font-weight: bold;     
+        }
+        #titre{
+
+            text-align: center;    
+            margin-top: 160px;
+            font-style: italic;
+            //text-decoration : underline;
+
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div>
+
+        <img  src="http://localhost/CoffreAppli/web/bundles/coffredocument/images/logo.jpg"   />  
+
+        <table id="date">
+            <tr>
+
+                <td id="trdate" > Le {{ "now"| localizeddate("medium", "none", null, null, "cccc d LLLL yyyy") }}</td>
+            </tr>
+
+        </table>    
+
+
+
+    </div>
+                <h2 id='titre'>Récapitulatif des titres du {{ date | localizeddate("medium", "none", null, null, "cccc d LLLL yyyy") }}</h2>
+    <table cellspacing=5" id="table">
+
+
+
+        {% for item in entity %}        
+            <tr>
+
+                {% if item.cleControle == 1 %} 
+                    <td id="tdtable"> Chéque déjeuner :  </td>
+                {% elseif item.cleControle == 2%}
+                    <td id="tdtable"  >Ticket restaurant : </td>
+                {% elseif item.cleControle == 3 %}
+                    <td id="tdtable"> Chéque de table : </td>
+                {% elseif item.cleControle == 4 %}
+                    <td id="tdtable">  Pass restaurant : </td>
+                {% elseif item.cleControle == 5 %}
+                    <td id="tdtable">  Ticket service : </td>
+                {% elseif item.cleControle == 6 %}
+                    <td id="tdtable">  Ticket kadéos : </td>
+                {%endif%}
+                <td id="tdtable" > {{ item.p *0.01 |number_format (2, '.')}} € </td>
+
+            </tr>   
+        {% endfor%}
+
+
+    </table>
+
+    <div id="hr">   <hr> </div>
+
+    <div id="sommetable" > {{totalticket *0.01}} €</div>
+
+
+
+
+{% endblock body%}

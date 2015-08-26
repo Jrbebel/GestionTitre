@@ -1,0 +1,6 @@
+services: 
+   
+    formatecode : 
+        class : coffre\appBundle\FunctionService\Code
+        arguments: [@request_stack,@doctrine.orm.entity_manager]
+        

@@ -1,0 +1,11 @@
+coffre_document:
+    resource: "@coffreDocumentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+coffreapp:
+    resource: "@coffreappBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+

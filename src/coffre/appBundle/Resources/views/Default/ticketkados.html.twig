@@ -1,0 +1,50 @@
+
+
+<!-- Modal -->
+    <div class="modal fade" id="kadeos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter Titre kadéos</h4>
+                </div>
+                <form action="{{path('calculkadeos')}}" method="POST" >
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" name="valeur" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="  submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<div class="panel panel-primary" id="jumbotron" >
+    <div class="panel-heading">Information des Kadéos</div>
+
+    <div class="panel-body" >
+        <dl class="dl-horizontal">
+            {# <dt>Session : </dt>
+             <dd>{{ app.session.get('Session') }}</dd>#}
+            {#                <dt>Numéro caisse : </dt>#}
+            {#                <dd>{{ app.session.get('Codecaisse') }}</dd>#}
+            <dt>Montant des Kadéos : </dt>
+            <dd> <span class="badge">{{ sum /100 }}€</span></dd>
+            {# <dt>Montant des Kadéos : </dt>
+             <dd> <span class="badge">0 €</span></dd>#}
+            <dt>        Nombre de ticket total :  </dt>
+            <dd> <span class="badge">{{ count }}</span></dd>
+
+            {#   <dt>Total des tickets :  </dt>
+               <dd> <span class="badge">0 €</span></dd>#}
+
+        </dl>
+        <a data-toggle="modal" data-target="#kadeos" id="ajouter"  type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</div>

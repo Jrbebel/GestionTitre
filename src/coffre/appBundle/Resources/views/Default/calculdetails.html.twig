@@ -1,0 +1,53 @@
+{% if calculdetailstotal is not empty %}
+    <div id="calculdetails">
+
+        <div class="panel panel-primary"  >
+            <div class="panel-heading">Détails</div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th>Détails</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in calculdetailstotal %}
+                        <tr>
+                            <td>   
+                                {% if item.cleControle == 1 %} 
+                                    Chéque déjeuner
+                                {% elseif item.cleControle == 2%}
+                                    Ticket restaurant
+                                {% elseif item.cleControle == 3 %}
+                                    Chéque de table
+                                {% elseif item.cleControle == 4 %}
+                                    Pass restaurant
+                                {% elseif item.cleControle == 5 %}
+                                    Ticket service
+                                {% elseif item.cleControle == 6 %}
+                                    Ticket kadéos
+                                {%endif%}</td>
+                            <td>{{item.c}}</td>
+                            <td>{{ item.p *0.01 |number_format (2, '.')}} €</td>
+                            <td><a href="{{path('detailscalultitre',{id : item.cleControle})}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
+
+                        </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+
+        {% else %}
+            <div class="panel panel-primary" id="calculdetails" >
+                <div class="panel-heading">Détails</div>
+                <p class="text-center">Vous n'avez aucun ticket enregistré</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+
+
+

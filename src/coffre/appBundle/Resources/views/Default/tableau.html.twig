@@ -1,0 +1,48 @@
+{% if entity is not empty %}
+
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th>Num Titre</th>
+                <th>Montant</th>
+                <th>Titre</th>
+                <th>Supprimer</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in entity %}
+                <tr>
+                    <td> {{item.Numtitre}} </td>
+                    <td>{{item.valeur * 0.01 | number_format(2, '.', ',') }}  €</td>
+                    <td>
+                        {% if item.cleControle == 1 %} 
+                            Chéque déjeuner
+                        {% elseif item.cleControle == 2%}
+                            Ticket restaurant
+                        {% elseif item.cleControle == 3 %}
+                            Chéque de table
+                        {% elseif item.cleControle == 4 %}
+                            Pass restaurant
+                        {% elseif item.cleControle == 5 %}
+                            Ticket service
+                        {% elseif item.cleControle == 6 %}
+                            Ticket kadéos
+                        {%endif%}
+
+
+                    </td>
+                    <td>
+                        <a type="button" href="{{path('deletetitre',{id:item.id})}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
+
+                </tr>
+            {%endfor%}
+
+        {% else %}
+        <p class="text-center">Vous n'avez aucun ticket enregistré</p>
+    {% endif %}
+</tbody>
+</table>

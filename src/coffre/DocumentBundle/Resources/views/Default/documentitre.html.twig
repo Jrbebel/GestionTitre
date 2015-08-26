@@ -1,0 +1,157 @@
+{% extends "::document.html.twig" %}
+{% block stylesheets %}
+    <style  type="text/css">
+        #quantite1{
+            margin-top: 313px;
+            margin-left: 590px;
+            font-weight: bold;
+            font-size: 16px;
+
+
+        }  
+        #quantite2{
+            margin-top: 430px;
+            margin-left: 590px;
+            font-weight: bold;
+            font-size: 16px;
+
+
+        }
+        #somme0{
+            padding-right: 18px;
+        }
+        #somme1{
+            padding-right: 20px;
+        }
+
+        #somme2{
+            padding-right: 20px;
+        }
+        #somme3{
+            padding-right: 22px;
+        }
+        #somme4{
+            padding-right: 21px;
+        }
+
+        #numtitre{
+
+            font-weight: bold; 
+            margin-top: 130px;
+            margin-left: 318px;
+            font-size: 15px;
+
+
+        }
+        #numero2{
+            padding-left: 22px;
+     
+        }
+        #numero4{
+            padding-left: 35px;
+          
+
+        }
+        
+        #num0{
+            padding-right:5px;
+            padding-left: 24px;
+        }
+        #num1{
+
+            padding-right: 5px;
+        }
+        #num2{
+
+            padding-right: 5px;
+        }
+        #num3{
+            padding-right: 5px;
+        }
+
+        #num4{
+
+
+            padding-right: 5px;
+        }
+
+        #num5{
+            padding-right: 5px;
+        }
+        #num6{
+            padding-right: 5px;
+        }
+        #num7{
+            padding-right: 5px;
+        }
+        #num8{
+            padding-right: 5px;
+        }
+
+
+
+
+
+
+
+
+    </style>
+{% endblock %}
+{% block body %}
+    <table id="quantite1">   
+        <tr>
+
+            {% for key,item in Somme %}
+                {% if item == 0 %}
+                    <td id={{"somme"~ key}}></td>
+                {%else%}
+                    <td id={{"somme"~ key}}>{{item}}</td>
+
+                {%endif%}
+            {% endfor %}
+        </tr>
+    </table>
+    <table id="numtitre">   
+        <tr>
+            <td id="numero2">1</td> 
+
+            {% for key,item in num1 %}
+                <td id="{{"num"~ key}}">   {{item}}</td>
+            {% endfor %}
+
+            <td id="numero4">2</td> 
+
+            {% for key,item in num2 %}
+                <td id="{{"num"~ key}}">   {{item}}</td>
+            {% endfor %}     
+
+        </tr>
+        <tr>
+            <td id="numero2" style="padding-top: 12px;">3</td> 
+
+            {% for key,item in num1 %}
+                <td style="padding-top: 12px;" id="{{"num"~ key}}">   {{item}}</td>
+            {% endfor %}
+
+            <td id="numero4 " style="padding-top: 12px;">4</td> 
+
+            {% for key,item in num2 %}
+                <td style="padding-top: 12px;" id="{{"num"~ key}}">   {{item}}</td>
+            {% endfor %}     
+
+        </tr>
+    </table>   
+    <table id="quantite2">   
+        <tr>
+
+            {% for key,item in Somme %}
+                {% if item == 0 %}
+                    <td id={{"somme"~ key}}></td>
+                {%else%}
+                    <td id={{"somme"~ key}}>{{item}}</td>
+
+                {%endif%}
+            {% endfor %}
+        </tr>
+    </table>        
+{% endblock body%}

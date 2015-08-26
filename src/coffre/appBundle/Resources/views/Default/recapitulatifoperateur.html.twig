@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6" >
+                <table class="table table-striped">
+                    <thead>
+                    <th>Opérateur</th>
+                    <th>Nombre ticket total</th>
+                    <th>Valeur ticket total</th>
+
+
+                    </thead>
+                    <tbody>
+                        {% for item in Caisse %}
+                            <tr>
+                                <td>
+                                    {{item.operateur}} 
+                                </td>
+                                <td>
+                                    {{item.c}} 
+                                </td>  
+                                <td>
+                                    {{item.s * 0.01 }} €
+                                </td>  
+                            </tr>
+
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a type="button" class="btn btn-primary" href="{{path('index')}}" >Retour</a>
+    </div>
+
+{% endblock %}
