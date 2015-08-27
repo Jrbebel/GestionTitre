@@ -1,6 +1,8 @@
 /app/logs/
 /app/config/parameters.yml
-/app/config/parameters.yml.dist
 /vendor/
 /app/cache/
 /web/bundles/
+/app/config/deploy.rb.save
+/app/config/deploy.rb
+/Capfile
