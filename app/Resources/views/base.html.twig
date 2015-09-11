@@ -6,18 +6,67 @@
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap-theme.min.css')}}" />
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/style.css')}}" />
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<nav class="navbar navbar-default ">
+
+
+
+{# On affiche des items pour les différentes options disponible #}
+
+<header>
+    <div class="container-fluid">
+
+        <div class="row text-center">
+            <div class="col-lg-2   btn btn-primary iconopt">
+                <i data-toggle="modal" data-target="#myModal" class="fa fa-plus-square fa-4x "></i>
+                <p class="textopt">Nouvelle session</p>
+            </div>
+            <div class="col-lg-2  btn btn-primary iconopt">
+                <i data-toggle="modal" data-target="#mycodecaisse" class="fa fa-user-plus  fa-4x"></i>
+                <p class="textopt">Nouveau opérateur</p>
+            </div>
+
+            <div class="col-lg-2  btn btn-primary iconopt">
+                <a class="lienopt" href="{{path('recapitulatifoperateur')}}"><i class="fa fa-users fa-4x"></i></a>
+                <p class="textopt">Récapitulatif opérateur</p>
+            </div>
+            <div class="col-lg-1  btn btn-primary iconopt">
+                <a  class="lienopt" href="{{path('recapitulatif')}}"><i class="fa fa-eye fa-4x"></i></a>
+                <p class="textopt">Récapitulatif</p>
+            </div>
+            <div class="col-lg-1  btn btn-primary iconopt">
+                <i class="fa fa-file-pdf-o fa-4x"></i></a>           
+                <p class="textopt">Documents</p>
+            </div>
+                {% if app.session.get('Session') is not empty or  app.session.get('Codecaisse') is not empty  %}
+            <div class="col-lg-3 iconinfopt" >
+                <p>
+                    <i class="fa fa-plus-square fa-2x "> {{ app.session.get('Session') }}</i> 
+                </p>
+                <p>
+                    <i class="fa fa-user-plus  fa-2x"> {{ app.session.get('Codecaisse') }}</i>
+                </p>
+            </div>   
+                {% endif %}
+
+        </div> 
+
+
+    </div>    
+
+</header>
+
+{#<nav class="navbar navbar-default ">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
             <li><a  data-toggle="modal" data-target="#myModal">Nouvelle session</a></li>
-            <li><a  data-toggle="modal" data-target="#mycodecaisse">Code Caisse</a></li>
-            <li><a  href="{{path('recapitulatif')}}">Récapitulatif</a></li>
-            <li><a  href="{{path('recapitulatifoperateur')}}">Récapitulatif operateur</a></li>
+            <li><a  >Code Caisse</a></li>
+            <li></li>
+            <li></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Document <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -31,17 +80,18 @@
 
         </ul>
     </div>
-</nav>
+</nav>#}
 
 <body>
 
 {% block body %}{% endblock %}
 
+</body>
 
 {% block javascripts %}
     <script src="{{asset('bundles/coffreapp/js/jquery.js')}}"></script>
     <script src="{{asset('bundles/coffreapp/js/bootstrap.min.js')}}"></script>
 
 {% endblock %}
-</body>
+
 </html>

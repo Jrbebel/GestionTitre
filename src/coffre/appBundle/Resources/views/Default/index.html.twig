@@ -15,7 +15,7 @@
                 <form action="{{path('session')}}" method="GET" >
                     <div class="modal-body">
 
-                        <input type="text" class="form-control" name="session" />
+                        <input id="input" autofocus="autofocus" type="text" class="form-control"  name="session" />
 
                     </div>
                     <div class="modal-footer">
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="mycodecaisse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="mycodecaisse"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -38,7 +38,7 @@
                 <form action="{{path('codecaisse')}}" method="GET" >
                     <div class="modal-body">
 
-                        <input type="text" class="form-control" name="codecaisse" />
+                        <input type="text" class="form-control" name="codecaisse" autofocus />
 
                     </div>
                     <div class="modal-footer">
@@ -166,6 +166,11 @@
                         }
                 });
                 }
+     
+$( document ).ready(function() {
+
+  $( "#code" ).focus();
+});   
     </script>
 
 {% endblock %}
