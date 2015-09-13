@@ -60,9 +60,7 @@ class DefaultController extends Controller {
         $session = new Session();
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('coffreappBundle:Ticket')->findBy(array('operateur' => $session->get('Codecaisse'), 'session' => $session->get('Session')), array('id' => "desc"));
-        //   $entities = $em->getRepository('coffreappBundle:Ticket')->findAll();
-        // $entities = $em->getRepository('coffreappBundle:Ticket')->All();
-        //   \Doctrine\Common\Util\Debug::dump($entities);
+
         return array('entity' => $entities);
     }
 
@@ -140,7 +138,8 @@ class DefaultController extends Controller {
         $Totaldtr = $this->container->get('formatecode')->CalculTitreAll();
         $sum = $this->container->get('formatecode')->sumKadeos();
         $Totalticket = $this->container->get('formatecode')->CalculnbreTitreAll();
-        return array("Totaldtr" => $Totaldtr[1], "totalticket" => $Totalticket[1],"sum" => $sum[1]);
+
+        return array("Totaldtr" => $Totaldtr[1], "totalticket" => $Totalticket[1], "sum" => $sum[1]);
     }
 
     /**

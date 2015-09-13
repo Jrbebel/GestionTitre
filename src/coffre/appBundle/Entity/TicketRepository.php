@@ -134,8 +134,8 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository {
         $session = new Session();
         $qb = $this->createQueryBuilder('a');
 
-        $qb->select('sum(a.valeur) ')->where('a.operateur = :op and a.session = :session and a.type = 6')
-                ->setParameter('op', $session->get('Codecaisse'))
+        $qb->select('sum(a.valeur) ')->where('a.session = :session and a.type = 6')
+              
                 ->setParameter('session', $session->get('Session'));
 
         return $qb
