@@ -1,31 +1,20 @@
 
-<div id="calcul">
-
-    <div class="panel panel-primary" id="jumbotron" >
-        <div class="panel-heading">Information des DTR</div>
-
-        <div class="panel-body" >
-            <dl class="dl-horizontal">
-                {# <dt>Session : </dt>
-                 <dd>{{ app.session.get('Session') }}</dd>#}
-                {#                <dt>Numéro caisse : </dt>#}
-                {#                <dd>{{ app.session.get('Codecaisse') }}</dd>#}
-                <dt>Montant des DTR : </dt>
-                <dd> <span class="badge">{{calcultotal * 0.01}} €</span></dd>
-                {# <dt>Montant des Kadéos : </dt>
-                 <dd> <span class="badge">0 €</span></dd>#}
-                <dt>        Nombre de ticket total :  </dt>
-                <dd> <span class="badge">{{calculnbretotal}}</span></dd>
-
-                {#   <dt>Total des tickets :  </dt>
-                   <dd> <span class="badge">0 €</span></dd>#}
-
-            </dl>
 
 
+<div class="panel panel-primary"  >
+    <div class="panel-heading">Information des Différents Titres Restaurant</div>
 
-        </div>
+    <div class="panel-body" >
+
+        <p>
+            <strong>Montant total : {{calcultotal * 0.01}} € </strong>
+        </p>
+        <p>
+            <strong>   Nombre de ticket total :  {{calculnbretotal}} </strong>
+        </p>
+
     </div>
+
 
 
 </div>

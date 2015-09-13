@@ -1,17 +1,17 @@
 {% if entity is not empty %}
 
-    <table class="table table-striped table-hover">
+    <table class="table table-bordered table-striped table-hover">
 
-        <thead>
+        <thead >
             <tr>
-                <th>Num Titre</th>
+                <th>Numéro du Titre</th>
                 <th>Montant</th>
                 <th>Titre</th>
                 <th>Supprimer</th>
 
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
 
             {% for item in entity %}
                 <tr>
@@ -42,7 +42,7 @@
             {%endfor%}
 
         {% else %}
-        <p class="text-center">Vous n'avez aucun ticket enregistré</p>
+        <h3 class="text-center">Vous n'avez aucun ticket enregistré.</h3>
     {% endif %}
 </tbody>
 </table>

@@ -46,14 +46,14 @@ and open the template in the editor.
 /*Style pour les icones cliquables dans le header*/
 
 .iconopt{
-   margin:  10px;
+    margin:  10px;
 
 }
 .iconinfopt{
     color: #337ab7;
     margin-top: 10px;
     padding-top: 10px;
-  
+
 }
 .textopt{
     text-align: center;
@@ -64,9 +64,32 @@ and open the template in the editor.
     color:white;
 }
 .lienopt:hover{
- color:white;
+    color:white;
 }
 
 p{
     font-family: 'Arimo', sans-serif;
+}
+
+
+/*Css dans le body*/
+
+#index{
+    margin-top: 80px;
+
+}
+.panel-body > p {
+    font-size: medium;
+    font-family: 'Arimo';
+}
+.panel-heading{
+    font-size: medium;
+}
+th{
+    text-align: center;
+}
+/*Css dans la page recapitulatif*/
+
+#recapitulatif{
+    margin-top: 50px;
 }

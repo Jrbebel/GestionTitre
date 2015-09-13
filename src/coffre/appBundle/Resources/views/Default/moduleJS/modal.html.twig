@@ -1,0 +1,95 @@
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nouvelle session</h4>
+                </div>
+                <form action="{{path('session')}}" method="GET" >
+                    <div class="modal-body">
+
+                        <input id="input" autofocus type="text" class="form-control"  name="session" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mycodecaisse"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nouvelle caisse</h4>
+                </div>
+                <form action="{{path('codecaisse')}}" method="GET" >
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" name="codecaisse" autofocus="autofocus" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imprimebordereaux" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nouvelle caisse</h4>
+                </div>
+                <form action="{{path('generationpdftitre')}}" method="GET" >
+                    <div class="modal-body">
+
+                        <lablel>Chéque déjeuner</lablel> <input type="text" class="form-control" name="chequedej" />
+                        <lablel>Pass restaurant</lablel> <input type="text" class="form-control" name="passrest" />
+                        <lablel>Chéque de table</lablel> <input type="text" class="form-control" name="chequetab" />
+                        <lablel>Ticket restaurant</lablel> <input type="text" class="form-control" name="ticketres" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+                    
+ <!-- Modal pour l ajout des kadéos -->
+    <div class="modal fade" id="kadeos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter Titre kadéos</h4>
+                </div>
+                <form action="{{path('calculkadeos')}}" method="POST" >
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" name="valeur" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="  submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>                   

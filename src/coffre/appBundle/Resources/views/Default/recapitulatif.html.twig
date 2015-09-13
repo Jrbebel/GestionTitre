@@ -3,30 +3,20 @@
 
 
 {% block body %}
-    <div class="container-fluid">
+  
         <div class="row">
             <div class="col-md-6" >
-                <div class="panel panel-primary" id="jumbotron" >
-                    <div class="panel-heading">Information</div>
+                <div class="panel panel-primary" id="recapitulatif" >
+                    <div class="panel-heading">Information genérale</div>
 
                     <div class="panel-body" >
 
-                        <dl class="dl-horizontal">
-
-                            <dt>Montant des DTR total: </dt>
-                            <dd> <span class="badge">{{ Totaldtr *0.01 }} €</span></dd>
-                            <dt>Nombre de ticket : </dt>
-                            <dd> <span class="badge">{{totalticket}} </span></dd>
-
-                            <dt>DTR + Kadéos : </dt>
-                            <dd> <span class="badge">{{ ( Totaldtr + sum )*0.01}} €</span></dd>
-                            </br>           
-                            <hr>
-                            {#   <dt>Total des tickets :  </dt>
-                               <dd> <span class="badge">0 €</span></dd>#}
-                            {#      <dt>        Nombre de ticket total :  </dt>
-                                  <dd> <span class="badge">{{calculnbretotal}}</span></dd>#}
-                        </dl>
+                        <p><strong>{{totalticket}} de divers ticket restaurant d'une valeur de {{ Totaldtr *0.01 }} €.</strong></p>
+                        <p><strong>{{ ( Totaldtr + sum )*0.01}} € de DTR et de kadéos.</strong></p>
+                        
+                        <p><strong></strong></p>
+                        
+                        
 
 
                     </div>
@@ -36,7 +26,6 @@
 
             </div>
         </div>
-    </div>
-
+ 
 
 {% endblock %}

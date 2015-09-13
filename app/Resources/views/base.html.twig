@@ -41,16 +41,16 @@
                 <i class="fa fa-file-pdf-o fa-4x"></i></a>           
                 <p class="textopt">Documents</p>
             </div>
-                {% if app.session.get('Session') is not empty or  app.session.get('Codecaisse') is not empty  %}
-            <div class="col-lg-3 iconinfopt" >
-                <p>
-                    <i class="fa fa-plus-square fa-2x "> {{ app.session.get('Session') }}</i> 
-                </p>
-                <p>
-                    <i class="fa fa-user-plus  fa-2x"> {{ app.session.get('Codecaisse') }}</i>
-                </p>
-            </div>   
-                {% endif %}
+            {% if app.session.get('Session') is not empty or  app.session.get('Codecaisse') is not empty  %}
+                <div class="col-lg-3 iconinfopt" >
+                    <p>
+                        <i class="fa fa-plus-square fa-2x "> {{ app.session.get('Session') }}</i> 
+                    </p>
+                    <p>
+                        <i class="fa fa-user-plus  fa-2x"> {{ app.session.get('Codecaisse') }}</i>
+                    </p>
+                </div>   
+            {% endif %}
 
         </div> 
 
@@ -59,34 +59,18 @@
 
 </header>
 
-{#<nav class="navbar navbar-default ">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-
-            <li><a  data-toggle="modal" data-target="#myModal">Nouvelle session</a></li>
-            <li><a  >Code Caisse</a></li>
-            <li></li>
-            <li></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Document <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{path('generationpdf')}}">Fiche titre</a></li>
-                    <li><a data-toggle="modal" data-target="#imprimebordereaux">Bordereaux titre</a></li>
-
-                </ul>
-            </li>
-            <li id="info" ><a>Session :  <span class="badge">{{ app.session.get('Session') }}</span></a></li>
-            <li ><a>N° Caisse :  <span class="badge">{{ app.session.get('Codecaisse') }}</span></a></li>
-
-        </ul>
-    </div>
-</nav>#}
-
 <body>
-
-{% block body %}{% endblock %}
-
+    <div class="container-fluid">
+    {% block body %} {% endblock%}              
+    </div>
 </body>
+
+<footer></footer>          
+
+
+
+
+
 
 {% block javascripts %}
     <script src="{{asset('bundles/coffreapp/js/jquery.js')}}"></script>

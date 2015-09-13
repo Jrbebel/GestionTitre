@@ -2,18 +2,21 @@
 
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6" >
+
+    <div class="row">
+        <div class="col-md-6" >
+            <div class="panel panel-primary" id="recapitulatif" >
+                <div class="panel-heading">Détails</div>
                 <table class="table table-striped">
-                    <thead>
+
+                    <thead >
                     <th>Opérateur</th>
                     <th>Nombre ticket total</th>
                     <th>Valeur ticket total</th>
 
 
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         {% for item in Caisse %}
                             <tr>
                                 <td>
@@ -33,7 +36,9 @@
                 </table>
             </div>
         </div>
-        <a type="button" class="btn btn-primary" href="{{path('index')}}" >Retour</a>
+ 
     </div>
+    <a type="button" class="btn btn-primary" href="{{path('index')}}" >Retour</a>
+
 
 {% endblock %}

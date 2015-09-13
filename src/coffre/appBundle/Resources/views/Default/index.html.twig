@@ -3,174 +3,34 @@
 
 {% block body %}
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Nouvelle session</h4>
-                </div>
-                <form action="{{path('session')}}" method="GET" >
-                    <div class="modal-body">
-
-                        <input id="input" autofocus="autofocus" type="text" class="form-control"  name="session" />
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="button submit" class="btn btn-primary">Créer</button>
-                    </div>
-                </form>
-            </div>
+    <div class="row" id="index"> 
+        <div class="col-lg-5">    
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-barcode"></i></span>
+                <input type="text" class="form-control" id="code"  aria-describedby="sizing-addon1">
+            </div> 
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="mycodecaisse"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Nouvelle caisse</h4>
-                </div>
-                <form action="{{path('codecaisse')}}" method="GET" >
-                    <div class="modal-body">
-
-                        <input type="text" class="form-control" name="codecaisse" autofocus />
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="button submit" class="btn btn-primary">Créer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="imprimebordereaux" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Nouvelle caisse</h4>
-                </div>
-                <form action="{{path('generationpdftitre')}}" method="GET" >
-                    <div class="modal-body">
-
-                        <lablel>Chéque déjeuner</lablel> <input type="text" class="form-control" name="chequedej" />
-                        <lablel>Pass restaurant</lablel> <input type="text" class="form-control" name="passrest" />
-                        <lablel>Chéque de table</lablel> <input type="text" class="form-control" name="chequetab" />
-                        <lablel>Ticket restaurant</lablel> <input type="text" class="form-control" name="ticketres" />
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="button submit" class="btn btn-primary">Créer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="container-fluid">
+        <div class="col-lg-offset-2 col-lg-5">
+            {{ render(controller("coffreappBundle:Default:Calcul")) }}
+        </div></div>
         <div class="row">
-            <div class="col-md-6" id="tableau">
-
-
+            <div class="col-lg-5">     
                 {{ render(controller("coffreappBundle:Default:tableau")) }}
-
-                {# <label>le : </label><input type="date" class="form-control" >
-                 <label> titre du :</label><input type="date" class="form-control">#}
-
             </div>
-            <div class="col-md-6" id="left">
-                <div class="input-group input-group-lg">
-                    <span class="input-group-addon" id="sizing-addon1">Code</span>
-                    <input type="text" class="form-control" id="code" placeholder='' aria-describedby="sizing-addon1">
-                </div>
-                {{ render(controller("coffreappBundle:Default:Calcul")) }}
+            <div class="col-lg-offset-2 col-lg-5">
                 {{ render(controller("coffreappBundle:Default:sumkadeos")) }}
-
             </div>
-
         </div>
-    </div>
 
 
-{% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
+        {% include 'coffreappBundle:Default:moduleJS/modal.html.twig' %}
 
-    <script>
-        $(document).ready(function () {
-        $("#code").keydown(function () {
-  
-        if ($("#code").val().length === 24) {
+    {% endblock %}
 
-        Requete($(this).val());
-        }
+    {% block javascripts %}
+        {{ parent() }}
 
-        })
+        {% include 'coffreappBundle:Default:moduleJS/coderecherche.html.twig' %}
 
-        ;
-        });
-                function Requete(code) {
-                var data = {
-                "code": code,
-                }
-                $.ajax({
-                type: "GET",
-                        url: "{{path('recherchecode')}}",
-                        data: data,
-                        dataType: "json",
-                        success: function (data) {
-                        /**On regarde les différentes erreurs **/
-                        console.log("code retour  est " + data);
-                                if (data === 201) {
-                        alert('Doublons de ticket');
-                        }
-                        $('#code').val(function () {
-
-
-                        if (this.value.length === 24) {
-                        $('#code').attr('disabled', 'disabled');
-                                return $(this).attr('placeholder');
-                        }
-
-                        });
-                        },
-                        error: function (data, status, error) {
-
-                        console.log("je suis dans l erreur");
-                        },
-                        complete: function (data) {
-
-                        $.get("{{path('ajaxtab')}}", function (data) {
-                        $('#tableau').html(data);
-                        });
-                                $.get("{{path('calculator')}}", function (data) {
-                                $('#calcul').html(data);
-                                });
-                                $.get("{{path('calculdetails')}}", function (data) {
-                                $('#calculdetails').html(data);
-                                });
-                                $('#code').removeAttr('disabled');
-                        }
-                });
-                }
-     
-$( document ).ready(function() {
-
-  $( "#code" ).focus();
-});   
-    </script>
-
-{% endblock %}
+    {% endblock %}
