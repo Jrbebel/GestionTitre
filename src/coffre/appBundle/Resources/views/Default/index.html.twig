@@ -3,34 +3,40 @@
 
 {% block body %}
 
-    <div class="row" id="index"> 
-        <div class="col-lg-5">    
+
+    <div class="row" id="index" >
+
+        <div class="col-lg-5">   
             <div class="input-group input-group-lg">
                 <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-barcode"></i></span>
                 <input type="text" class="form-control" id="code"  aria-describedby="sizing-addon1">
-            </div> 
-        </div>
-        <div class="col-lg-offset-2 col-lg-5">
-            {{ render(controller("coffreappBundle:Default:Calcul")) }}
-        </div></div>
-        <div class="row">
-            <div class="col-lg-5">     
+            </div>
+            <div id="tableau"> {# permet de faire la mise du tableau lors de l'ajout d'un ticket #}
                 {{ render(controller("coffreappBundle:Default:tableau")) }}
-            </div>
-            <div class="col-lg-offset-2 col-lg-5">
-                {{ render(controller("coffreappBundle:Default:sumkadeos")) }}
+
             </div>
         </div>
 
+        <div class="col-lg-offset-2 col-lg-5" >
+
+            {{ render(controller("coffreappBundle:Default:Calcul")) }}
+            {{ render(controller("coffreappBundle:Default:sumkadeos")) }}
+        </div>
+
+    </div>
 
 
-        {% include 'coffreappBundle:Default:moduleJS/modal.html.twig' %}
 
-    {% endblock %}
 
-    {% block javascripts %}
-        {{ parent() }}
 
-        {% include 'coffreappBundle:Default:moduleJS/coderecherche.html.twig' %}
 
-    {% endblock %}
+    {% include 'coffreappBundle:Default:moduleJS/modal.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% include 'coffreappBundle:Default:moduleJS/coderecherche.html.twig' %}
+
+{% endblock %}

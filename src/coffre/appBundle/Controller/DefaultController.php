@@ -170,7 +170,7 @@ class DefaultController extends Controller {
      * @Template("coffreappBundle:Default:ticketkados.html.twig")
      */
     public function sumkadeosAction() {
-        $sum = $this->container->get('formatecode')->sumKadeos();
+        $sum = $this->container->get('formatecode')->sumKadeosByop();
         $count = $this->container->get('formatecode')->countkadeos();
 
         return array("sum" => $sum[1], 'count' => $count[1]);

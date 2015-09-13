@@ -1,65 +1,67 @@
- <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
         $("#code").keydown(function () {
-  
-        if ($("#code").val().length === 24) {
 
-        Requete($(this).val());
-        }
+            if ($("#code").val().length === 24) {
+
+                Requete($(this).val());
+            }
 
         })
 
-        ;
-        });
-                function Requete(code) {
-                var data = {
-                "code": code,
+                ;
+    });
+    function Requete(code) {
+        var data = {
+            "code": code,
+        }
+        $.ajax({
+            type: "GET",
+            url: "{{path('recherchecode')}}",
+            data: data,
+            dataType: "json",
+            success: function (data) {
+                /**On regarde les différentes erreurs **/
+                console.log("code retour  est " + data);
+                if (data === 201) {
+                    alert('Doublons de ticket');
                 }
-                $.ajax({
-                type: "GET",
-                        url: "{{path('recherchecode')}}",
-                        data: data,
-                        dataType: "json",
-                        success: function (data) {
-                        /**On regarde les différentes erreurs **/
-                        console.log("code retour  est " + data);
-                                if (data === 201) {
-                        alert('Doublons de ticket');
-                        }
-                        $('#code').val(function () {
+                $('#code').val(function () {
 
 
-                        if (this.value.length === 24) {
+                    if (this.value.length === 24) {
                         $('#code').attr('disabled', 'disabled');
-                                return $(this).attr('placeholder');
-                        }
+                        return $(this).attr('placeholder');
+                    }
 
-                        });
-                        },
-                        error: function (data, status, error) {
-
-                        console.log("je suis dans l erreur");
-                        },
-                        complete: function (data) {
-
-                        $.get("{{path('ajaxtab')}}", function (data) {
-                        $('#tableau').html(data);
-                        });
-                                $.get("{{path('calculator')}}", function (data) {
-                                $('#calcul').html(data);
-                                });
-                                $.get("{{path('calculdetails')}}", function (data) {
-                                $('#calculdetails').html(data);
-                                });
-                                $('#code').removeAttr('disabled');
-                        }
                 });
-                }
-     
-$( document ).ready(function() {
+            },
+            error: function (data, status, error) {
 
-  $( "#code" ).focus();
-});   
-    </script>
+                console.log("je suis dans l erreur");
+            },
+            complete: function (data) {
+
+                $.get("{{path('ajaxtab')}}", function (data) {
+
+                    $('#tableau').html(data);
+                });
+                $.get("{{path('calculator')}}", function (data) {
+                    $('#calcul').html(data);
+                });
+    {#   $.get("{{path('calculdetails')}}", function (data) {
+           $('#calculdetails').html(data);
+       });
+     #}
+                     $('#code').removeAttr('disabled');
+                 }
+             });
+         }
+
+         $(document).ready(function () {
+
+             $("#code").focus();
+         });
+</script>
 
 {# empty Twig template #}

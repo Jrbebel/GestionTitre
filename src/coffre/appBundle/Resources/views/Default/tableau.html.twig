@@ -1,6 +1,7 @@
 {% if entity is not empty %}
 
-    <table class="table table-bordered table-striped table-hover">
+
+    <table class="table table-bordered table-striped table-hover" >
 
         <thead >
             <tr>
@@ -39,10 +40,19 @@
                     </td>
 
                 </tr>
-            {%endfor%}
 
-        {% else %}
-        <h3 class="text-center">Vous n'avez aucun ticket enregistré.</h3>
-    {% endif %}
-</tbody>
-</table>
+            {%endfor%}
+        </tbody>
+    </table>
+{% else %}
+
+        <table>
+            <tbody>
+            <h3 class="text-center">Vous n'avez aucun ticket enregistré.</h3>
+
+            </tbody>
+        </table>      
+    
+
+{% endif %}
+

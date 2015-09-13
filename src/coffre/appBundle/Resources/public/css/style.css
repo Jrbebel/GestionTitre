@@ -88,6 +88,9 @@ p{
 th{
     text-align: center;
 }
+tbody{
+    text-align: center;
+}
 /*Css dans la page recapitulatif*/
 
 #recapitulatif{

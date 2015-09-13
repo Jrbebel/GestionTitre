@@ -18,7 +18,7 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository {
 
         $qb->select('a')->where('a.session = :session and a.clecontrole != 6')
                 ->setParameter('session', $session->get('Session'));
-              
+
 
         return $qb
                         ->getQuery()
@@ -130,12 +130,25 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository {
 
     /*     * ******TICKET KADEOS******** */
 
-    public function sumkadeos() {
+    public function sumkadeosByop() {
         $session = new Session();
         $qb = $this->createQueryBuilder('a');
 
-        $qb->select('sum(a.valeur) ')->where('a.session = :session and a.type = 6')
-              
+        $qb->select('sum(a.valeur) ')->where('a.operateur = :op and a.session = :session and a.type = 6')
+                ->setParameter('op', $session->get('Codecaisse'))
+                ->setParameter('session', $session->get('Session'));
+
+        return $qb
+                        ->getQuery()
+                        ->getSingleResult()
+        ;
+    }
+       public function sumkadeos() {
+        $session = new Session();
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->select('sum(a.valeur) ')->where(' a.session = :session and a.type = 6')
+            
                 ->setParameter('session', $session->get('Session'));
 
         return $qb

@@ -151,12 +151,16 @@ class Code {
         return $caisse;
     }
 
+    public function sumKadeosByop() {
+
+        $caisse = $this->em->getRepository('coffreappBundle:Ticket')->sumkadeosByop();
+        return $caisse;
+    }
     public function sumKadeos() {
 
         $caisse = $this->em->getRepository('coffreappBundle:Ticket')->sumkadeos();
         return $caisse;
     }
-
     public function countKadeos() {
 
         $caisse = $this->em->getRepository('coffreappBundle:Ticket')->countkadeos();
