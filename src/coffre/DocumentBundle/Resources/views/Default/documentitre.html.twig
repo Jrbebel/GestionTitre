@@ -2,8 +2,8 @@
 {% block stylesheets %}
     <style  type="text/css">
         #quantite1{
-            margin-top: 313px;
-            margin-left: 590px;
+            margin-top: 307px;
+            margin-left: 574px;
             font-weight: bold;
             font-size: 16px;
 
@@ -17,21 +17,33 @@
 
 
         }
+        #decimal{
+            margin-top: 45px;
+            margin-left: 678px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        #entier{
+            margin-top: 70px;
+            margin-left: 600px;
+            font-weight: bold;
+            font-size: 16px;
+        }
         #somme0{
             padding-right: 18px;
         }
         #somme1{
-            padding-right: 20px;
+            padding-right: 18px;
         }
 
         #somme2{
-            padding-right: 20px;
+            padding-right: 18px;
         }
         #somme3{
-            padding-right: 22px;
+            padding-right: 20px;
         }
         #somme4{
-            padding-right: 21px;
+            padding-right: 20px;
         }
 
         #numtitre{
@@ -45,14 +57,14 @@
         }
         #numero2{
             padding-left: 22px;
-     
+
         }
         #numero4{
             padding-left: 35px;
-          
+
 
         }
-        
+
         #num0{
             padding-right:5px;
             padding-left: 24px;
@@ -111,6 +123,21 @@
             {% endfor %}
         </tr>
     </table>
+  
+    <table id="decimal">   
+        <tr>
+
+            {% for key,item in decimal %}
+                {% if item == 0 %}
+                    <td id={{"somme9"~ key}}></td>
+                {%else%}
+                    <td id={{"somme9"~ key}}>{{item}}</td>
+
+                {%endif%}
+            {% endfor %}
+        </tr>
+    </table> 
+
     <table id="numtitre">   
         <tr>
             <td id="numero2">1</td> 
@@ -141,17 +168,17 @@
 
         </tr>
     </table>   
-    <table id="quantite2">   
-        <tr>
-
-            {% for key,item in Somme %}
-                {% if item == 0 %}
-                    <td id={{"somme"~ key}}></td>
-                {%else%}
-                    <td id={{"somme"~ key}}>{{item}}</td>
-
-                {%endif%}
-            {% endfor %}
-        </tr>
-    </table>        
+    {#    <table id="quantite2">   
+            <tr>
+    
+                {% for key,item in Somme %}
+                    {% if item == 0 %}
+                        <td id={{"somme"~ key}}></td>
+                    {%else%}
+                        <td id={{"somme"~ key}}>{{item}}</td>
+    
+                    {%endif%}
+                {% endfor %}
+            </tr>
+        </table>  #}      
 {% endblock body%}

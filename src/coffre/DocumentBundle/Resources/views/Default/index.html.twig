@@ -1,1 +1,15 @@
-Hello {{ name }}!
+{% extends "base.html.twig"%}
+
+{% block body %}
+    <div class="col-lg-5" id="index">
+        <div class="row">
+            <h4>Fiche récapitulatif des divers titres restaurants. <a href="{{path('generationpdf')}}"><i class=" fa fa-file-pdf-o fa-2x"></i></a></h4> 
+            <hr>
+            <h4>Impression du borderau de remise (DTR). <a href="{{path('generationpdftitre')}}"><i class=" fa fa-file-pdf-o fa-2x"></i></a></h4>
+            <hr>
+            <h4>Impression de borderau (Kadéos). <a href="google.fr"><i class=" fa fa-file-pdf-o fa-2x"></i></a></h4>
+        </div>
+        <a type="button" class="btn btn-primary" href="{{path('index')}}" >Retour</a> 
+    </div>
+
+{% endblock body %}

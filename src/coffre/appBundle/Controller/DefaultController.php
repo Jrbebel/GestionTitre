@@ -30,7 +30,7 @@ class DefaultController extends Controller {
         /*         * Creer une session* */
         $session = new Session();
         $session->start();
-        $session->set('Session', $request->get('session') . date('m'));
+        $session->set('Session',date('m'). $request->get('session') );
 
 
         return $this->redirect($this->generateUrl("index"));

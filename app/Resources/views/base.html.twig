@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/bootstrap-theme.min.css')}}" />
         <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/style.css')}}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('bundles/coffreapp/css/font-awesome.min.css')}}" />
         <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -38,7 +38,7 @@
                 <p class="textopt">Récapitulatif</p>
             </div>
             <div class="col-lg-1  btn btn-primary iconopt">
-                <a class="lienopt" href="#"><i class="fa fa-file-pdf-o fa-4x"></i></a>           
+                <a class="lienopt" href="{{path('documents')}}"><i class="fa fa-file-pdf-o fa-4x"></i></a>           
                 <p class="textopt">Documents</p>
             </div>
             {% if app.session.get('Session') is not empty or  app.session.get('Codecaisse') is not empty  %}

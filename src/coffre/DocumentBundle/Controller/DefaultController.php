@@ -11,11 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/hello/{name}")
+     * @Route("/documents",name="documents")
      * @Template()
      */
-    public function indexAction($name) {
-        return array('name' => $name);
+    public function indexAction() {
+        return array();
     }
 
     /**
@@ -29,7 +29,7 @@ class DefaultController extends Controller {
 
         $Totaldtr = $this->container->get('formatecode')->CalculTitreAll();
 //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
-        $html = $this->renderView('coffreDocumentBundle:Default:document.html.twig', array('entity' => $requete, "totalticket" => $Totaldtr[1], "date" => $datesession->format("m-M-Y")));
+        $html = $this->renderView('coffreDocumentBundle:Default:document.html.twig', array('entity' => $requete, "totalticket" => $Totaldtr[1], "date" => $datesession));
 //on appelle le service html2pdf
         $html2pdf = $this->get('html2pdf_factory')->create();
 //real : utilise la taille réelle
@@ -51,17 +51,22 @@ class DefaultController extends Controller {
     public function ImprimeTitreAction(Request $request) {
 
         $Totalticket = $this->container->get('formatecode')->CalculnbreTitreAll();
-        // var_dump($this->calculSomme((string) 314));
+
         $somme = $this->calculSomme((string) 2145);
-        print_r(intval (1523.06));
+        $decimal = $this->partiedecimalMontant((string) 3458.59);
+        
+        $entier = $this->partientierMontant((int)3458.59);
+//        print_r($entier);
+       
+//        print_r($intPart);
         $num1 = $this->calculNumtitre((string) 123456789);
         $num2 = $this->calculNumtitre((string) 123488878);
         $num3 = $this->calculNumtitre((string) 123488878);
         $num4 = $this->calculNumtitre((string) 123488878);
-        $html = $this->renderView('coffreDocumentBundle:Default:documentitre.html.twig', array("totalticket" => $Totalticket[1], "Somme" => $somme, "num1" => $num1, "num2" => $num2));
+        $html = $this->renderView('coffreDocumentBundle:Default:documentitre.html.twig', array("totalticket" => $Totalticket[1], "Somme" => $somme, "num1" => $num1, "num2" => $num2, "entier" => $entier, "decimal" => $decimal));
 //on appelle le service html2pdf
-        //  $html2pdf = $this->get('html2pdf_factory')->create();
-        $html2pdf = $this->get('html2pdf_factory')->create('P', 'A4', 'en', true, 'UTF-8', array(10, 15, 10, 15));
+        $html2pdf = $this->get('html2pdf_factory')->create();
+        //$html2pdf = $this->get('html2pdf_factory')->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 //real : utilise la taille réelle
         $html2pdf->pdf->SetDisplayMode('real');
 //writeHTML va tout simplement prendre la vue stocker dans la variable $html pour la convertir en format PDF
@@ -101,6 +106,35 @@ class DefaultController extends Controller {
         for ($i = 0; $i < $taille; $i++) {
 
             array_push($array, $somme[$i]);
+        }
+
+
+        return $array;
+    }
+
+    public function partiedecimalMontant($montants) {
+        
+        $montant = substr($montants, strpos($montants, '.') + 1);
+        $taille = strlen($montant);
+        $array = array();
+        for ($i = 0; $i < $taille; $i++) {
+
+            array_push($array, $montant[$i]);
+        }
+
+
+        return $array;
+    }
+
+    public function partientierMontant($montant) {
+
+
+        $montants = (string)$montant;
+        $taille = strlen($montants);
+        $array = array();
+        for ($i = 0; $i < $taille; $i++) {
+
+            array_push($array, $montants[$i]);
         }
 
 

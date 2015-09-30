@@ -10,6 +10,7 @@ namespace coffre\appBundle\FunctionService;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 /**
  * Description of Code
  *
@@ -29,9 +30,11 @@ class Code {
     public function sessiondate() {
 
         $session = new Session();
-        $date = new \DateTime($session->get('Session'));
+        $dateyears = new \DateTime('now');
+        $years=$dateyears->format('Y');
+        $date = new \DateTime($years.$session->get('Session'));
         return $date;
-       // print_r(date($session));
+        // print_r(date($session));
     }
 
     public function FormateCode() {
@@ -156,11 +159,13 @@ class Code {
         $caisse = $this->em->getRepository('coffreappBundle:Ticket')->sumkadeosByop();
         return $caisse;
     }
+
     public function sumKadeos() {
 
         $caisse = $this->em->getRepository('coffreappBundle:Ticket')->sumkadeos();
         return $caisse;
     }
+
     public function countKadeos() {
 
         $caisse = $this->em->getRepository('coffreappBundle:Ticket')->countkadeos();
