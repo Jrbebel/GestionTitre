@@ -123,7 +123,7 @@ class DefaultController extends Controller {
      * @Route("/detailscalultitre",name="detailscalultitre")
      * @Template("coffreappBundle:Default:detailscalultitire.html.twig")
      */
-    public function DetailsCallcultitreAction(Request $request) {
+    public function DetailsCalcultitreAction(Request $request) {
 
         $details = $this->container->get('formatecode')->DetailsCalculTitre();
         return array('details' => $details);
